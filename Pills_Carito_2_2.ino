@@ -11,14 +11,21 @@ unsigned long tiempoInicioTarea12 = millis();
 const int frenoizquierdo = 5;
 
 
+//freno derecho
+const int frenoderecho = 6;
+
+
 void setup()
 
 {
   Serial.begin(19200);
-  pinMode(sensortarro, INPUT); //sensor optico
   pinMode(4, OUTPUT); //confirmación de lectura no intermitente 
+  pinMode(sensortarro, INPUT);
   pinMode(frenoizquierdo, OUTPUT); //relacionado con cilindro izquierdo  
   digitalWrite(frenoizquierdo, LOW); //estado inicial cilindro izquierdo
+  pinMode(frenoderecho, OUTPUT);
+  digitalWrite(frenoderecho, HIGH);
+
   tiempoInicioTarea11 = millis();
 }
 
@@ -27,10 +34,10 @@ void setup()
 
 
 void loop() {
-  tarea1();  //Activar freno derecho, leer sensor de tarro y activar sensor freno izquierdo mientras ve el tarro. En caso
+  tarea2();  //Activar freno derecho, leer sensor de tarro y activar sensor freno izquierdo mientras ve el tarro. En caso
   //que no vea tarro, entonces desactiva freno izquierdo.
 }
-void tarea1() {
+void tarea2() {
   if (digitalRead(sensortarro) && !bitSiSensorTarroTarea11 && millis() - tiempoInicioTarea11 >= tiempoSiSensorTarroTarea1) {
     //Se cumple si sensor ve tarro por tiempoSi y si bitSiSensor es false
     Serial.println("Presencia de tarro 11");
