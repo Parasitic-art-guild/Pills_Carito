@@ -48,7 +48,7 @@ void tarea2() {
     digitalWrite(frenoizquierdo, HIGH);
     bitSiSensorTarroTarea12 = false;  //codigo necesario para activar tarea 2
   } else {
-    if (!digitalRead(sensortarro)) {
+     if (!digitalRead(sensortarro)) {
       tiempoInicioTarea11 = millis();  //si sensor no ve nada, el tiempo incial es igual a millis
     }
   }
