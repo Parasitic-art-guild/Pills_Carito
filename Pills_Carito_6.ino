@@ -1,9 +1,8 @@
 //sensor tarro
-const int sensortarro = 9;
 
 //freno izquierdo
 const int frenoizquierdo = 5;
-const int iniciosecuenciallenado = 10;
+
 
 //freno derecho
 const int frenoderecho = 6;
@@ -23,15 +22,11 @@ bool finalestadoIzquierdo = false;
 const int prueba = 3;
 
 
-
 void setup()
 
 {
   Serial.begin(19200);
-  pinMode(sensortarro, INPUT);
   pinMode(prueba, INPUT);
-  pinMode(iniciosecuenciallenado, INPUT);
-  digitalRead(iniciosecuenciallenado);
   pinMode(frenoizquierdo, OUTPUT);
   digitalWrite(frenoizquierdo, HIGH);
   pinMode(frenoderecho, OUTPUT);
@@ -65,9 +60,6 @@ void tarea3() {
     tiempoInicioDerechoTarea3 = millis();
   }
 }
-
-
-
 void loop() {
   //  tarea1(); //Activar freno derecho, leer sensor de tarro y activar sensor freno izquierdo mientras ve el tarro. En caso
   //que no vea tarro, entonces desactiva freno izquierdo.
