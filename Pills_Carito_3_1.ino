@@ -13,7 +13,7 @@ bool motorActivo = false;
 bool esperandoParo = false;
 bool finsecuenciallenado = false;
 
-void setup() {
+  void setup() {
   Serial.begin(19200);
   pinMode(iniciosecuenciallenado, INPUT);
   digitalRead(iniciosecuenciallenado);
@@ -22,7 +22,7 @@ void setup() {
   tiempoInicio = millis();    // Registrar el tiempo inicial
 }
 
-void tarea3() {
+void tarea4() {
   if (digitalRead(iniciosecuenciallenado)) {
     // Activar el motor después de un tiempo de espera
     if (!finsecuenciallenado && !motorActivo && millis() - tiempoInicio >= tiempoInicioMotor) {
@@ -55,5 +55,5 @@ void tarea3() {
 }
 
 void loop() {
-  tarea3();  //secuencia de llenado, se activa plato tolva con delay y se para con delay cuando el sensor ya observo la leva.
+  tarea4();  //secuencia de llenado, se activa plato tolva con delay y se para con delay cuando el sensor ya observo la leva.
 }
