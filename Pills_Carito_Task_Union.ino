@@ -6,6 +6,7 @@ unsigned long tiempoSiSensorTarroTarea1 = 10000;
 unsigned long tiempoNoSensorTarroTarea1 = 5000;
 unsigned long tiempoInicioTarea11 = millis();
 unsigned long tiempoInicioTarea12 = millis();
+const int confirmacionlectura = 7;
 
 //freno izquierdo
 const int frenoizquierdo = 5;
@@ -15,9 +16,8 @@ const int frenoderecho = 6;
 
 //secuencia de llenado
 const int motorPin = 4;
-/* naranja con tarea sensado tarro
-pinMode(4, OUTPUT); //confirmación de lectura no intermitente
-*/
+
+
 const int iniciosecuenciallenado = 10;
 const int sensorPin = 8;
 const unsigned long tiempoInicioMotor = 5000;
@@ -43,10 +43,10 @@ const int prueba = 3;
 void setup() {
   // put your setup code here, to run once:
 pinMode (sensortarro, INPUT);
-pinMode (sensortarro, INPUT);
 pinMode(frenoizquierdo, OUTPUT); //relacionado con cilindro izquierdo
 pinMode(frenoderecho, OUTPUT);
-pinMode(4, OUTPUT); //confirmación de lectura no intermitente
+pinMode(prueba, INPUT);
+pinMode(confirmacionlectura, OUTPUT); 
 pinMode(iniciosecuenciallenado, INPUT);
 digitalRead(iniciosecuenciallenado);
 pinMode(motorPin, OUTPUT); // Configurar el pin del motor como salida
