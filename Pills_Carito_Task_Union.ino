@@ -110,16 +110,21 @@ void tarea20() {
       esperandoParo = false;    // Resetear estado de espera
       tiempoInicio = millis();  // Reiniciar el tiempo inicial
       Serial.println("Motor detenido.");
+      Serial.print("finalestadoDerecho = ");
+      Serial.println(finalestadoDerecho);
+      Serial.print("estadoDerecho = ");
+      Serial.println(estadoDerecho);
       finsecuenciallenado = true;
     }
   } else {
     tiempoInicio = millis();
     finsecuenciallenado = false;
+
   }
 }
 
 void tarea30() {
-  if (digitalRead(prueba)) {
+  if (finsecuenciallenado) {
     // Manejo del cilindro derecho
     if (!finalestadoDerecho && !estadoDerecho && millis() - tiempoInicioDerechoTarea3 >= tiempoAperturaDerechoTarea3) {
       digitalWrite(frenoderecho, LOW);  // Abrir cilindro derecho
@@ -131,7 +136,7 @@ void tarea30() {
       Serial.println("Cerrar cilindro derecho");
       finalestadoDerecho = true;
     }
-    if (!finalestadoIzquierdo && finalestadoDerecho && !estadoIzquierdo && millis() - tiempoInicioDerechoTarea3 - tiempoAperturaDerechoTarea3 - tiempoCerrarDerechoTarea3 >= tiempoAperturaIzquierdoTarea3) {
+    /* if (!finalestadoIzquierdo && finalestadoDerecho && !estadoIzquierdo && millis() - tiempoInicioDerechoTarea3 - tiempoAperturaDerechoTarea3 - tiempoCerrarDerechoTarea3 >= tiempoAperturaIzquierdoTarea3) {
       digitalWrite(frenoizquierdo, LOW);  // Abrir cilindro derecho
       Serial.println("Abrir cilindro izquierdo");
       estadoIzquierdo = true;
@@ -140,7 +145,7 @@ void tarea30() {
       digitalWrite(frenoizquierdo, HIGH);  // Abrir cilindro derecho
       Serial.println("Cerrar cilindro izquierdo");
       finalestadoIzquierdo = true;
-    }
+    } */
   } else {
     tiempoInicioDerechoTarea3 = millis();
   }
