@@ -23,7 +23,7 @@ const int motorPin = 4;
 bool iniciosecuenciallenado;
 const int sensorPin = 8;
 const unsigned long tiempoInicioMotor = 5000;
-const unsigned long tiempoParadaMotor = 3000;
+const unsigned long tiempoParadaMotor = 5000;
 unsigned long tiempoInicio = 0;
 unsigned long tiempoDeteccionLeva = 0;
 bool motorActivo = false;
@@ -107,19 +107,18 @@ void tarea20() {
     if (!finsecuenciallenado && esperandoParo && millis() - tiempoDeteccionLeva >= tiempoParadaMotor) {
       digitalWrite(motorPin, LOW);  // Apagar el motor
       motorActivo = false;          // Resetear estado del motor
-      esperandoParo = false;    // Resetear estado de espera
-      tiempoInicio = millis();  // Reiniciar el tiempo inicial
+      esperandoParo = false;        // Resetear estado de espera
+      tiempoInicio = millis();      // Reiniciar el tiempo inicial
       Serial.println("Motor detenido.");
-      Serial.print("finalestadoDerecho = ");
+      /*Serial.print("finalestadoDerecho = ");
       Serial.println(finalestadoDerecho);
       Serial.print("estadoDerecho = ");
-      Serial.println(estadoDerecho);
+      Serial.println(estadoDerecho);*/
       finsecuenciallenado = true;
     }
   } else {
     tiempoInicio = millis();
     finsecuenciallenado = false;
-
   }
 }
 
@@ -148,6 +147,8 @@ void tarea30() {
     } */
   } else {
     tiempoInicioDerechoTarea3 = millis();
+    finalestadoDerecho = false;
+    estadoDerecho = false;
   }
 }
 
